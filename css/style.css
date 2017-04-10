@@ -1,0 +1,242 @@
+body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Audiowide', cursive;
+}
+
+h3{
+  position: absolute;
+  text-align:center;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  color: white;
+}
+
+footer{
+  bottom: 0;
+  width:100%;
+  font-size: 20px;
+  position: absolute;
+  text-align: center;
+  color: white;
+}
+
+footer P{
+  font-size: 20px;
+  color: white;
+  text-align: center;
+}
+
+a:hover {
+    background-color: green;
+}
+
+table{
+  width: 500px;
+  height: 500px;
+}
+
+tr td{
+  border: 1px solid white;
+}
+
+
+.tableContainer{
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  margin-top: 270px;
+  margin-left: 195px;
+  top: 0;
+  border: 1px;
+}
+
+.miss-ship{
+  border: 1px solid white;
+  background-image:url(../images/miss-img.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.gamecontainer{
+  position: absolute;
+  display: flex;
+  border: 2px solid white;
+  height: 1095px;
+  width: 900px;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right:0;
+}
+
+.shipsLeft{
+  height: 200px;
+  width: 800px;
+  border: 1px solid white;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
+.shipImage1{
+  height: 160px;
+  width: 160px;
+  position: static;
+  margin-left: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-image:url(../images/shipSize5.png);
+  background-repeat: no-repeat;
+  background-size:contain;
+  background-position: center;
+}
+
+.shipImage2{
+  height: 140px;
+  width: 140px;
+  position: static;
+  margin-left: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-image:url(../images/shipSize4.png);
+  background-repeat: no-repeat;
+  background-size:contain;
+  background-position: center;
+}
+
+.shipImage3{
+  height: 140px;
+  width: 140px;
+  position: static;
+  margin-left: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-image:url(../images/shipSize3.png);
+  background-repeat: no-repeat;
+  background-size:contain;
+  background-position: center;
+}
+
+.shipImage4{
+  height: 120px;
+  width: 120px;
+  position: static;
+  margin-left: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-image:url(../images/shipSize2.png);
+  background-repeat: no-repeat;
+  background-size:contain;
+  background-position: center;
+}
+
+.shipImage5{
+  height: 100px;
+  width: 100px;
+  position: static;
+  margin-left: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-image:url(../images/shipSize1Org.png);
+  background-repeat: no-repeat;
+  background-size:contain;
+  background-position: center;
+}
+
+.score{
+  height: 50px;
+  width: 150px;
+  border: 1px solid red;
+  margin-left: 565px;
+  margin-right: 380px;
+  margin-bottom: 240px;
+  bottom: 0;
+  position: absolute;
+}
+
+.shoots{
+  height: 50px;
+  width: 150px;
+  border: 1px solid red;
+  margin-left: 180px;
+  margin-right: 380px;
+  margin-bottom: 240px;
+  bottom: 0;
+  position: absolute;
+}
+
+.restart{
+  height: 50px;
+  width: 150px;
+  border: 1px solid red;
+  margin-left: 380px;
+  margin-right: 380px;
+  margin-bottom: 50px;
+  bottom: 0;
+  position: absolute;
+}
+
+.playButton{
+  width:260px;
+  height: 20px;
+  margin:auto;
+  opacity:0.6;
+}
+
+.playButton A{
+  font-size: 80px;
+  margin:0;
+  padding: 0;
+  color: white;
+  width: inherit;
+  height: inherit;
+}
+
+.shipBackground{
+  width: 40%;
+  min-width: 779px;
+  max-width: 100%;
+  margin-top: 5%;
+  margin-left: 10%;
+  height: 300px;
+  background:url(../images/battleship.png) no-repeat center ;
+  background-size: contain;
+}
+
+.container{
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: url(../images/bkg.jpg) no-repeat center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+
+.title{
+  width:auto;
+  height: auto;
+  margin-top: 5%;
+  min-height: 100px;
+}
+
+.title P {
+  font-size: 80px;
+  text-align: center;
+  margin:0;
+  padding: 0;
+  width: inherit;
+  height: inherit;
+  min-width: 714px;
+  color: white;
+}
