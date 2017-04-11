@@ -32,6 +32,8 @@ footer P{
   text-align: center;
 }
 
+
+
 a:hover {
     background-color: green;
 }
@@ -45,6 +47,20 @@ tr td{
   border: 1px solid white;
 }
 
+.miss-ship{
+  border: 1px solid white;
+  background-image:url(../images/miss-img.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.explosion-gif{
+  width: auto;
+  height: auto;
+  background-image:url(../images/Explosion.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .tableContainer{
   position: absolute;
@@ -56,12 +72,6 @@ tr td{
   border: 1px;
 }
 
-.miss-ship{
-  border: 1px solid white;
-  background-image:url(../images/miss-img.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
 .gamecontainer{
   position: absolute;
@@ -100,6 +110,19 @@ tr td{
   background-position: center;
 }
 
+.shipImage1Sinked{
+  height: 160px;
+  width: 160px;
+  position: static;
+  margin-left: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-image:url(../images/shipSize5Sinked.png);
+  background-repeat: no-repeat;
+  background-size:contain;
+  background-position: center;
+}
+
 .shipImage2{
   height: 140px;
   width: 140px;
@@ -108,6 +131,19 @@ tr td{
   margin-top: auto;
   margin-bottom: auto;
   background-image:url(../images/shipSize4.png);
+  background-repeat: no-repeat;
+  background-size:contain;
+  background-position: center;
+}
+
+.shipImage2Sinked{
+  height: 140px;
+  width: 140px;
+  position: static;
+  margin-left: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-image:url(../images/shipSize4Sinked.png);
   background-repeat: no-repeat;
   background-size:contain;
   background-position: center;
@@ -126,6 +162,20 @@ tr td{
   background-position: center;
 }
 
+.shipImage3Sinked{
+  height: 140px;
+  width: 140px;
+  position: static;
+  margin-left: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-image:url(../images/shipSize3Sinked.png);
+  background-repeat: no-repeat;
+  background-size:contain;
+  background-position: center;
+}
+
+
 .shipImage4{
   height: 120px;
   width: 120px;
@@ -134,6 +184,19 @@ tr td{
   margin-top: auto;
   margin-bottom: auto;
   background-image:url(../images/shipSize2.png);
+  background-repeat: no-repeat;
+  background-size:contain;
+  background-position: center;
+}
+
+.shipImage4Sinked{
+  height: 120px;
+  width: 120px;
+  position: static;
+  margin-left: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-image:url(../images/shipSize2Sinked.png);
   background-repeat: no-repeat;
   background-size:contain;
   background-position: center;
@@ -152,35 +215,59 @@ tr td{
   background-position: center;
 }
 
+.shipImage5Sinked{
+  height: 100px;
+  width: 100px;
+  position: static;
+  margin-left: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-image:url(../images/shipSize1Sinked.png);
+  background-repeat: no-repeat;
+  background-size:contain;
+  background-position: center;
+}
+
 .score{
-  height: 50px;
+  height: 100px;
   width: 150px;
-  border: 1px solid red;
-  margin-left: 565px;
+  margin-left: 550px;
   margin-right: 380px;
-  margin-bottom: 240px;
+  margin-bottom: 200px;
   bottom: 0;
   position: absolute;
 }
 
+.score p{
+  height: 30px;
+  width: 30px;
+  margin-left: 55px;
+  margin-top: 5px;
+}
+
 .shoots{
-  height: 50px;
+  height: 100px;
   width: 150px;
-  border: 1px solid red;
   margin-left: 180px;
   margin-right: 380px;
-  margin-bottom: 240px;
+  margin-bottom: 200px;
   bottom: 0;
   position: absolute;
+}
+
+.shoots p {
+  height: 30px;
+  width: 30px;
+  margin-left: 55px;
+  margin-top: 5px;
 }
 
 .restart{
   height: 50px;
   width: 150px;
-  border: 1px solid red;
   margin-left: 380px;
   margin-right: 380px;
-  margin-bottom: 50px;
+  margin-bottom: 120px;
   bottom: 0;
   position: absolute;
 }
