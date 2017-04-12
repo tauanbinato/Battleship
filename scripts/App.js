@@ -19,9 +19,9 @@ const TOTAL_SHIPS = 5;
 const SHIP_EXCEPTION = 4;
 
 //Sound MUS/SFX Volume Constants
-const GAME_PLAY_MUS   = 30;
-const LASER_SHOOT_SFX = 40;
-const ONE_HIT_SFX     = 80;
+const GAME_PLAY_MUS   = 70;
+const LASER_SHOOT_SFX = 50;
+const ONE_HIT_SFX     = 50;
 
 //Score Gained Constants
 const LOW_SHIP_SINKED  = 200;
@@ -66,9 +66,9 @@ class App{
     //Randomize ships inside matrizMap
     this.putShipsInMatriz();
 
-    console.log(mapMatriz[0]+"\n"+ mapMatriz[1] +"\n"+ mapMatriz[2] +"\n"+ mapMatriz[3] +"\n"+ mapMatriz[4] +"\n"
-    + mapMatriz[5] +"\n"+ mapMatriz[6] +"\n"+ mapMatriz[7] +"\n"+ mapMatriz[8] +"\n"+ mapMatriz[9]);
-
+  //  console.log(mapMatriz[0]+"\n"+ mapMatriz[1] +"\n"+ mapMatriz[2] +"\n"+ mapMatriz[3] +"\n"+ mapMatriz[4] +"\n"
+    //+ mapMatriz[5] +"\n"+ mapMatriz[6] +"\n"+ mapMatriz[7] +"\n"+ mapMatriz[8] +"\n"+ mapMatriz[9]);
+    console.table(mapMatriz);
 
     //Initialize Visual Grid
     this.initGrid();
@@ -93,7 +93,7 @@ class App{
   {
     var sound = new buzz.sound("assets/sciAudio.mp3");
     sound.load();
-    //sound.loop().play();
+    sound.loop().play();
     sound.setVolume(GAME_PLAY_MUS);
   }
 
@@ -113,6 +113,19 @@ class App{
     sound.setVolume(ONE_HIT_SFX);
   }
 
+  playLoseSound()
+  {
+    var sound = new buzz.sound("assets/Voice/VO_Defeat_Alien.wav");
+    sound.load();
+    sound.play();
+  }
+
+  playWinSound()
+  {
+    var sound = new buzz.sound("assets/Voice/VO_Victory_SH.wav");
+    sound.load();
+    sound.play();
+  }
   /* ============================================================================================================================== */
   /* ============================================================================================================================== */
   /* ====================================================== Draw STUFF ============================================================ */
@@ -176,7 +189,7 @@ class App{
   //Draw gain score on screen
   reduceScoreOnMiss()
   {
-    //Increase player score
+    //reduce player score
     playerScore -= LOSS_ON_MISS;
 
     if(playerScore < 0)
@@ -186,12 +199,57 @@ class App{
     $('#numberOfScore').text(`${playerScore}`);
   }
 
+  drawWinScreen()
+  {
+
+    this.playWinSound();
+    let value = confirm("VICTORY!\nHumanity is in debt with you!\nPress OK if you want to play again!");
+              if (value)
+                window.location.reload();
+              else
+                window.location.href="index.html";
+  }
+
+  drawLoseScreen()
+  {
+
+    this.playLoseSound();
+    let value = confirm("DEFEAT..HAHA!\nPress OK if you want to play again!");
+              if (value)
+                window.location.reload();
+              else
+                window.location.href="index.html";
+  }
 
   /* ============================================================================================================================== */
   /* ============================================================================================================================== */
   /* ====================================================== USER INPUTS (Handlers) ================================================ */
   /* ============================================================================================================================== */
   /* ============================================================================================================================== */
+
+  checkEndGame()
+  {
+
+    var totalShipsDamage = ship_size2_hits + ship_size3_hits + ship_size4_hits + ship_size4_2_hits + ship_size5_hits;
+    var damageLeft = 18 - totalShipsDamage;
+    console.log(totalShipsDamage);
+
+    if(totalShipsDamage == 18 && playerShoots >= 0)
+    {
+      this.drawWinScreen();
+
+    }
+    else if(playerShoots < damageLeft)
+    {
+      this.drawLoseScreen();
+
+    }
+    else if (playerShoots == 0)
+    {
+      this.drawLoseScreen();
+    }
+
+  }
 
   //Check if one kind of ship was sinked. if it is change the element class and give respective score multiply.
   checkIfShipSinked()
@@ -200,38 +258,42 @@ class App{
     if(ship_size2_hits == 2)
     {
       $("#ship_Size2").addClass("shipImage5Sinked");
-      console.log("2 sinked");
       this.increaseScore(LOW_SHIP_SINKED);
-      ship_size2_hits = 0;
-
+      //ship_size2_hits = 0;
     }
+
     if(ship_size3_hits == 3)
     {
       $("#ship_Size3").addClass("shipImage4Sinked");
-      console.log("3 sinked");
+      //console.log("3 sinked");
       this.increaseScore(LOW_SHIP_SINKED);
-      ship_size3_hits = 0;
+      //ship_size3_hits = 0;
+
     }
+
     if(ship_size4_hits == 4 && ship_size4_2_hits == 0)
     {
       $("#ship_Size4").addClass("shipImage2Sinked");
       console.log("4 sinked");
       this.increaseScore(MID_SHIP_SINKED);
-      ship_size4_hits = 0;
+      //ship_size4_hits = 0;
+
     }
+
     if(ship_size4_2_hits == 4)
     {
       $("#ship_Size42").addClass("shipImage3Sinked");
       console.log("4.2 sinked");
       this.increaseScore(MID_SHIP_SINKED);
-      ship_size4_2_hits = 0;
+      //ship_size4_2_hits = 0;
     }
+
     if(ship_size5_hits == 5)
     {
       $("#ship_Size5").addClass("shipImage1Sinked");
-      console.log("5 sinked");
+      //console.log("5 sinked");
       this.increaseScore(HIGH_SHIP_SINKED);
-      ship_size5_hits = 0;
+      //ship_size5_hits = 0;
     }
 
   }
@@ -244,6 +306,7 @@ class App{
       window.location.reload();
     });
   }
+
 
   //Shoot handler is responsable of controling user clicks inputs and check if a ship was sinked.
   shoot_Handler()
@@ -263,9 +326,6 @@ class App{
         if(pos.row != undefined && pos.column != undefined)
         {
 
-          //Reduce shoots
-          this.reduceShoots();
-
           //Get what number is inside the matriz given a position.
           var matrizNum = mapMatriz[pos.row][pos.column];
 
@@ -283,6 +343,7 @@ class App{
               element.addClass('explosion-gif');
               ship_size2_hits++;
               this.checkIfShipSinked();
+              this.reduceShoots();
               break;
 
             case 3:
@@ -290,6 +351,7 @@ class App{
               element.addClass('explosion-gif');
               ship_size3_hits++;
               this.checkIfShipSinked();
+              this.reduceShoots();
               break;
 
             case 4:
@@ -298,9 +360,11 @@ class App{
               ship_size4_hits++;
               if(ship_size4_hits > 4)
                {
+                 ship_size4_hits = 4;
                  ship_size4_2_hits++;
                }
               this.checkIfShipSinked();
+              this.reduceShoots();
               break;
 
             case 5:
@@ -308,6 +372,7 @@ class App{
               element.addClass('explosion-gif');
               ship_size5_hits++;
               this.checkIfShipSinked();
+              this.reduceShoots();
               break;
 
             default:
@@ -318,14 +383,16 @@ class App{
               this.playMissSound();
               element.addClass('miss-ship');
               this.reduceScoreOnMiss();
+              this.reduceShoots();
               break;
 
           }
-
+            this.checkEndGame();
         }
     });
 
   }
+
 
   //Hanlder Game
   setupHandlers()
